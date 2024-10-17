@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using PaulLarrea_Taller1PrograIV.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<PaulLarrea_Taller1PrograIVContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PaulLarrea_Taller1PrograIVContext") ?? throw new InvalidOperationException("Connection string 'PaulLarrea_Taller1PrograIVContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
